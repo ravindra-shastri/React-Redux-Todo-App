@@ -21,14 +21,17 @@ code {
 .input {
   padding: 1rem 8rem;
   background-color: rgb(222, 222, 222);
-  color: rgb(19, 8, 228);
-  font-size: 1.4rem;
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 500;
   border-radius: 6px;
   text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0rem .3rem .5rem 0rem rgb(110, 160, 160);
+  border: 1px solid black;
 }
 
 .ui-content {
-  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,13 +40,16 @@ code {
 h2{
   margin: 0 1rem;
   font-size: 1.6rem;
-  font-weight:500;
+  font-weight:400;
   color:black;
+  cursor: default;
 }
 .active {
-  color: yellow;
+  color:rgb(13, 137, 13);
+  text-decoration: line-through;
 }
 .remove-btn{
   color:red;
-  font-weight:600;
+  font-weight:500;
+  cursor:default;
 }

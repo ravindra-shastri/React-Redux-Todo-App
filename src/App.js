@@ -25,7 +25,7 @@ function App(props) {
 
   function handleRemove(value) {
     props.dispatch({
-      type: "remove",
+      type: "delete",
       value
     });
   }
@@ -51,13 +51,13 @@ function App(props) {
               <li key={i} className="ui-content">
                 <input
                   type="checkbox"
-                  checked={e.isDone ? "true" : "false"}
-                  onChange={handleIsDone}
+                  checked={e.isDone}
+                  onChange={() => handleIsDone(i)}
                 />
                 <h2 className={e.isDone ? "active" : ""}>
                   {e.todo}
                 </h2>
-                <span className="remove-btn" onClick={handleRemove} >X</span>
+                <span className="remove-btn" onClick={() => handleRemove(i)} >X</span>
               </li>
             )
           })

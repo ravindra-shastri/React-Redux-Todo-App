@@ -10,7 +10,7 @@ const reducer = (state = [], { type, value }) => {
     case "isDone":
       return state.map((e, i) =>
         value === i
-          ? { ...state, isDone: !e.isDone }
+          ? { ...e, isDone: !e.isDone }
           : e);
 
     default:
