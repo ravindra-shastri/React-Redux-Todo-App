@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import { connect } from "react-redux";
+import { store } from './store/reducer';
+// import {add,remove, isDone } from './store/action';
 
-function App() {
+
+function App(props) {
+  function handleTodo(event) {
+    if (event.keyCode === 13 && event.target.value) {
+      store.dispatch({
+        type: "add",
+        value: {
+          todo: event.target.value,
+          isDone: false,
+        }
+      });
+      event.targetvalue = "";
+    }
+  }
+  function handleIsDone(value) {
+    props.dispatch({
+      type: "isDone",
+      value
+    });
+  }
+
+  function handleRemove(value) {
+    props.dispatch({
+      type: "remove",
+      value
+    });
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>React-Redux-Todo-App</h3>
+      <hr />
+      <div>
+        <input
+          className="input"
+          type="text"
+          placeholder="Enter Your Todo"
+          onKeyUp={handleTodo}
+        />
+      </div>
+      <ul>
+        {
+          props.todo.map((e, i) => {
+            return (
+              <li key={i} className="ui-content">
+                <input
+                  type="checkbox"
+                  checked={e.isDone ? "true" : "false"}
+                  onChange={handleIsDone}
+                />
+                <h2 className={e.isDone ? "active" : ""}>
+                  {e.todo}
+                </h2>
+                <span className="remove-btn" onClick={handleRemove} >X</span>
+              </li>
+            )
+          })
+        }
+      </ul>
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    todo: [...state]
+  }
+}
+
+
+
+export default connect(mapStateToProps)(App);
