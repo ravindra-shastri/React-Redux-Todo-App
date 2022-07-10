@@ -18,9 +18,4 @@ const reducer = (state = [], { type, value }) => {
   }
 }
 
-
-
-
-
-
 export let store = createStore(reducer);

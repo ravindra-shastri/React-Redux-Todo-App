@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
 import { store } from './store/reducer';
-// import {add,remove, isDone } from './store/action';
-
 
 function App(props) {
   function handleTodo(event) {
@@ -30,11 +28,11 @@ function App(props) {
     });
   }
 
-
-
   return (
     <div className="App">
-      <h3>React-Redux-Todo-App</h3>
+      <h3>
+        React-Redux-Todo-App
+      </h3>
       <hr />
       <div>
         <input
@@ -54,10 +52,16 @@ function App(props) {
                   checked={e.isDone}
                   onChange={() => handleIsDone(i)}
                 />
-                <h2 className={e.isDone ? "active" : ""}>
+                <h2 className={e.isDone ? "active" : ""}
+                >
                   {e.todo}
                 </h2>
-                <span className="remove-btn" onClick={() => handleRemove(i)} >X</span>
+                <span
+                  className="remove-btn"
+                  onClick={() => handleRemove(i)}
+                >
+                  X
+                </span>
               </li>
             )
           })
@@ -72,7 +76,5 @@ function mapStateToProps(state) {
     todo: [...state]
   }
 }
-
-
 
 export default connect(mapStateToProps)(App);
